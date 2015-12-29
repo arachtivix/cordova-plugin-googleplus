@@ -183,8 +183,8 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
 
     cordova.getThreadPool().execute(new Runnable() {
       public void run() {
-        String scope;
-        String token;
+        String scope = null;
+        String token = null;
 
         try {
           if (GooglePlus.this.webKey != null) {
@@ -222,13 +222,13 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           return;
         }
         catch (IOException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + ","+ token + "): " + e.getMessage());
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage());
           return;
         } catch (GoogleAuthException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + ","+ token + "): " + e.getMessage());
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage());
           return;
         } catch (JSONException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + ","+ token + "): " + e.getMessage());
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage());
           return;
         }
 
