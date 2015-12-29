@@ -222,13 +222,13 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           return;
         }
         catch (IOException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "): " + e.getMessage());
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + ","+ token + "): " + e.getMessage());
           return;
         } catch (GoogleAuthException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "): " + e.getMessage());
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + ","+ token + "): " + e.getMessage());
           return;
         } catch (JSONException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "): " + e.getMessage());
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + ","+ token + "): " + e.getMessage());
           return;
         }
 
