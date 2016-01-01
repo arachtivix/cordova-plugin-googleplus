@@ -186,10 +186,10 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
         String scope = null;
         String token = null;
 
-        result.put("webKey",GooglePlus.this.webKey);
-        result.put("apiKey",GooglePlus.this.apiKey);
-
         try {
+
+          result.put("webKey",GooglePlus.this.webKey);
+          result.put("apiKey",GooglePlus.this.apiKey);
           if (GooglePlus.this.webKey != null) {
             // Retrieve server side tokens
             scope = "audience:server:client_id:" + GooglePlus.this.webKey;
