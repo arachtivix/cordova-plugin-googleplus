@@ -213,6 +213,8 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
             GoogleAuthUtil.clearToken(context, token);
             result.put("oauthToken", token);
           }
+
+          result.put("tried","I tried! :S");
         }
         catch (UserRecoverableAuthException userAuthEx) {
           // Start the user recoverable action using the intent returned by
@@ -231,8 +233,6 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage());
           return;
         }
-
-        result.put("tried","I tried! :S");
 
         savedCallbackContext.success(result);
       }
