@@ -22,6 +22,8 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import android.accounts.AccountManager.AccountManager;
+import android.accounts.Account.Account;
 import org.apache.cordova.*;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -186,6 +188,8 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
         String scope = null;
         String token = null;
 
+        Account acct = AccountManager.getAccounts()[0];
+
         try {
 
           result.put("webKey",GooglePlus.this.webKey);
@@ -193,7 +197,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           if (GooglePlus.this.webKey != null) {
             // Retrieve server side tokens
             scope = "audience:server:client_id:" + GooglePlus.this.webKey;
-            token = GoogleAuthUtil.getToken(context, email, scope);
+            token = GoogleAuthUtil.getToken(context, acct, scope, null);
             result.put("condition","GooglePlus.this.webKey != null");
             result.put("idToken", token);
           }
@@ -203,7 +207,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
             // Retrieve the oauth token with offline mode
             scope = "oauth2:server:client_id:" + GooglePlus.this.apiKey;
             scope += ":api_scope:" + GooglePlus.this.scopesString;
-            token = GoogleAuthUtil.getToken(context, email, scope);
+            token = GoogleAuthUtil.getToken(context, acct, scope, null);
             // Since this is a short-lived one time token immediately remove it from
             // the cache. This ensures a new token each time the user authenticates.
             GoogleAuthUtil.clearToken(context, token);
@@ -212,7 +216,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           } else if (GooglePlus.this.requestOfflineToken) {
             // Retrieve the oauth token with offline mode
             scope = "oauth2:" + Scopes.PLUS_LOGIN;
-            token = GoogleAuthUtil.getToken(context, email, scope);
+            token = GoogleAuthUtil.getToken(context, acct, scope, null);
             // Since this is a short-lived one time token immediately remove it from
             // the cache. This ensures a new token each time the user authenticates.
             GoogleAuthUtil.clearToken(context, token);
