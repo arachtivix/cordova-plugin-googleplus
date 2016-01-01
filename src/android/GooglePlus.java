@@ -232,6 +232,8 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           return;
         }
 
+        result.put("tried","I tried! :S");
+
         savedCallbackContext.success(result);
       }
     });
