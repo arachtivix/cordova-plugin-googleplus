@@ -186,11 +186,15 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
         String scope = null;
         String token = null;
 
+        result.put("webKey",GooglePlus.this.webKey);
+        result.put("apiKey",GooglePlus.this.apiKey);
+
         try {
           if (GooglePlus.this.webKey != null) {
             // Retrieve server side tokens
             scope = "audience:server:client_id:" + GooglePlus.this.webKey;
             token = GoogleAuthUtil.getToken(context, email, scope);
+            result.put("condition","GooglePlus.this.webKey != null");
             result.put("idToken", token);
           }
 
@@ -203,6 +207,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
             // Since this is a short-lived one time token immediately remove it from
             // the cache. This ensures a new token each time the user authenticates.
             GoogleAuthUtil.clearToken(context, token);
+            result.put("condition","GooglePlus.this.apiKey != null");
             result.put("oauthToken", token);
           } else if (GooglePlus.this.requestOfflineToken) {
             // Retrieve the oauth token with offline mode
@@ -211,6 +216,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
             // Since this is a short-lived one time token immediately remove it from
             // the cache. This ensures a new token each time the user authenticates.
             GoogleAuthUtil.clearToken(context, token);
+            result.put("condition","GooglePlus.this.requestOfflineToken");
             result.put("oauthToken", token);
           }
 
