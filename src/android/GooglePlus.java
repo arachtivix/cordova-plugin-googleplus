@@ -188,7 +188,7 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
         String scope = null;
         String token = null;
 
-        Account acct = AccountManager.get(webView.getContext()).getAccounts()[0];
+        Account acct = AccountManager.get(context).getAccounts()[0];
 
         try {
 
