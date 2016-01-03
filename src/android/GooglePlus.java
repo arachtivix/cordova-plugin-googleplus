@@ -235,13 +235,13 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           return;
         }
         catch (IOException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.isGooglePlayServicesAvailable(context));
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context));
           return;
         } catch (GoogleAuthException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.isGooglePlayServicesAvailable(context));
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context));
           return;
         } catch (JSONException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.isGooglePlayServicesAvailable(context));
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context));
           return;
         }
 
