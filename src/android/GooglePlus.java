@@ -234,13 +234,13 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           return;
         }
         catch (IOException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage()) + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context);
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context));
           return;
         } catch (GoogleAuthException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage()) + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context);
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context));
           return;
         } catch (JSONException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage()) + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context);
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context));
           return;
         }
 
