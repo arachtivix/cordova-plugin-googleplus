@@ -24,6 +24,7 @@ import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 import android.accounts.AccountManager;
 import android.accounts.Account;
+import com.google.android.gms.common.GoogleApiAvailability;
 import org.apache.cordova.*;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -234,13 +235,13 @@ public class GooglePlus extends CordovaPlugin implements ConnectionCallbacks, On
           return;
         }
         catch (IOException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context));
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.isGooglePlayServicesAvailable(context));
           return;
         } catch (GoogleAuthException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context));
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.isGooglePlayServicesAvailable(context));
           return;
         } catch (JSONException e) {
-          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleAuthUtil.isGooglePlayServicesAvailable(context));
+          savedCallbackContext.error("Failed to retrieve token (" + e.getClass().getName() + "," + scope + "," + token + "): " + e.getMessage() + ":::" + GoogleApiAvailability.isGooglePlayServicesAvailable(context));
           return;
         }
 
